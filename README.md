@@ -1,5 +1,8 @@
 # qb-scoreboard
-Scoreboard for QB-Core
+Scoreboard for QB-Core with cop, ems & mechanic counts
+
+![image](https://github.com/MattiVboiii/qb-scoreboard-edit/assets/57048210/1fa98933-4f5d-4908-a0ff-9910c709dbe5)
+
 
 # License
 
