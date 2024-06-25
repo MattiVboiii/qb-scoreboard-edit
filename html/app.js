@@ -15,6 +15,9 @@ window.addEventListener("message", (event) => {
 const Open = (data) => {
   $(".scoreboard-block").fadeIn(150);
   $("#total-players").html("<p>" + data.players + " of " + data.maxPlayers + "</p>");
+  $("#total-cops").html("<p>" + (data.currentCops > 0 ? data.currentCops : '<i class="fas fa-times"></i>') + "</p>");
+  $("#total-ambulance").html("<p>" + (data.currentAmbulance > 0 ? data.currentAmbulance : '<i class="fas fa-times"></i>') + "</p>");
+  $("#total-mechanic").html("<p>" + (data.currentMechanic > 0 ? data.currentMechanic : '<i class="fas fa-times"></i>') + "</p>");
 
   $.each(data.requiredCops, (i, category) => {
     var beam = $(".scoreboard-info").find('[data-type="' + i + '"]');
@@ -46,6 +49,30 @@ const Setup = (data) => {
       </div>
     `;
   });
+  scoreboardHtml += `
+    <div class="scoreboard-info-beam">
+      <div class="info-beam-title-players">
+        <p>Cops Online</p>
+      </div>
+      <div class="info-beam-status" id="total-cops" style="color: #ededed"></div>
+    </div>
+  `;
+  scoreboardHtml += `
+    <div class="scoreboard-info-beam">
+      <div class="info-beam-title-players">
+        <p>EMS Online</p>
+      </div>
+      <div class="info-beam-status" id="total-ambulance" style="color: #ededed"></div>
+    </div>
+  `;
+  scoreboardHtml += `
+    <div class="scoreboard-info-beam">
+      <div class="info-beam-title-players">
+        <p>Mechanic Online</p>
+      </div>
+      <div class="info-beam-status" id="total-mechanic" style="color: #ededed"></div>
+    </div>
+  `;
   scoreboardHtml += `
     <div class="scoreboard-info-beam" style="background: #dc143c">
       <div class="info-beam-title-players">

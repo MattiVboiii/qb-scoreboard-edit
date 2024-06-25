@@ -63,7 +63,7 @@ end)
 if Config.Toggle then
     RegisterCommand('scoreboard', function()
         if not scoreboardOpen then
-            QBCore.Functions.TriggerCallback('qb-scoreboard:server:GetScoreboardData', function(players, cops, playerList)
+            QBCore.Functions.TriggerCallback('qb-scoreboard:server:GetScoreboardData', function(players, cops, ambulance, mechanic, playerList)
                 playerOptin = playerList
 
                 SendNUIMessage({
@@ -71,7 +71,9 @@ if Config.Toggle then
                     players = players,
                     maxPlayers = Config.MaxPlayers,
                     requiredCops = Config.IllegalActions,
-                    currentCops = cops
+                    currentCops = cops,
+                    currentAmbulance = ambulance,
+                    currentMechanic = mechanic
                 })
 
                 scoreboardOpen = true
@@ -89,7 +91,7 @@ if Config.Toggle then
 else
     RegisterCommand('+scoreboard', function()
         if scoreboardOpen then return end
-        QBCore.Functions.TriggerCallback('qb-scoreboard:server:GetScoreboardData', function(players, cops, playerList)
+        QBCore.Functions.TriggerCallback('qb-scoreboard:server:GetScoreboardData', function(players, cops, ambulance, mechanic, playerList)
             playerOptin = playerList
 
             SendNUIMessage({
@@ -97,7 +99,9 @@ else
                 players = players,
                 maxPlayers = Config.MaxPlayers,
                 requiredCops = Config.IllegalActions,
-                currentCops = cops
+                currentCops = cops,
+                currentAmbulance = ambulance,
+                currentMechanic = mechanic
             })
 
             scoreboardOpen = true

@@ -3,6 +3,8 @@ local QBCore = exports['qb-core']:GetCoreObject()
 QBCore.Functions.CreateCallback('qb-scoreboard:server:GetScoreboardData', function(_, cb)
     local totalPlayers = 0
     local policeCount = 0
+    local ambulanceCount = 0
+    local mechanicCount = 0
     local players = {}
 
     for _, v in pairs(QBCore.Functions.GetQBPlayers()) do
@@ -13,11 +15,19 @@ QBCore.Functions.CreateCallback('qb-scoreboard:server:GetScoreboardData', functi
                 policeCount += 1
             end
 
+            if v.PlayerData.job.name == "ambulance" and v.PlayerData.job.onduty then
+                ambulanceCount += 1
+            end
+
+            if v.PlayerData.job.name == "mechanic" and v.PlayerData.job.onduty then
+                mechanicCount += 1
+            end
+
             players[v.PlayerData.source] = {}
             players[v.PlayerData.source].optin = QBCore.Functions.IsOptin(v.PlayerData.source)
         end
     end
-    cb(totalPlayers, policeCount, players)
+    cb(totalPlayers, policeCount, ambulanceCount, mechanicCount, players)
 end)
 
 RegisterNetEvent('qb-scoreboard:server:SetActivityBusy', function(activity, bool)

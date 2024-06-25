@@ -17,15 +17,16 @@
   right: 3vh;
   top: 30vh;
   margin: 1vh;
+  border: 2px #dc143c solid;
+  box-shadow: 0 0 10px #dc143c, inset  0 0 50px #dc143c;
 }
 
 .scoreboard-header {
-  border-radius: 1vh;
   position: relative;
-  width: 92%;
   height: 5vh;
-  margin: 1.7vh 1.3vh 0vh 1.7vh;
   background: #dc143c;
+  border-top-left-radius: 2vh;
+  border-top-right-radius: 2vh;
 }
 
 .scoreboard-header > p {
